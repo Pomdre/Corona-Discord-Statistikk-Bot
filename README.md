@@ -9,6 +9,9 @@ En discord corona statistikk bot som viser corona statistikk i Norge.
 ```
 npm install discord.js
 ```
+```
+npm install request
+```
 
 ### Hvordan bruke
 ```
