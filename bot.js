@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  Inevneter meg   https://discordapp.com/oauth2/authorize?client_id=686622063280128000&permissions=68608&scope=bot    //
-//  Laget av Sondre Batalden @Pomdre                                                                                    //
+//  Laget av @Pomdre#0449                                                                                               //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Discord = require('discord.js');
 const client = new Discord.Client();
