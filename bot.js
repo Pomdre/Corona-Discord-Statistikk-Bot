@@ -63,7 +63,7 @@ function (error, response, body) {
 {
   //Make it embed and send it
       "embed": {
-          "title": "Corona/Covid 19 statistikk i Norge",
+          "title": "Korona/Covid-19 statistikk i Norge",
           "color": 0x66c255,
           "description": 
           "\n**Smittede i Norge totalt:**\n" + obj.metadata.confirmed.total + " eller " + ((obj.metadata.confirmed.total/obj.metadata.population)*100).toFixed(2) + "%" +
