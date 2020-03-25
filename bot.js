@@ -1,15 +1,20 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  Inevneter meg   https://discordapp.com/oauth2/authorize?client_id=686622063280128000&permissions=68608&scope=bot    //
-//  Laget av @Pomdre#0449                                                                                               //
+//  Invite  https://discordapp.com/oauth2/authorize?client_id=686622063280128000&permissions=68608&scope=bot            //
+//  Made by  @Pomdre#0449                                                                                               //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const settings = require('./settings.json');
 const request = require("request")
 
+//On ready
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
+
+var corona = "!corona"
+var korona = "!korona"
+var covid = "!covid-19"
 
 //Todays date
 function today() {
@@ -36,10 +41,6 @@ function yesterday() {
     return yyyy+'-'+mm+'-'+dd;
 }
 
-var corona = "!corona"
-var korona = "!korona"
-var covid = "!covid-19"
-
 //Just don't know why but i added a ping option
 client.on('message', msg => {
     if (msg.content.toLowerCase() === corona + " ping" || msg.content.toLowerCase() === korona + " ping" || msg.content.toLowerCase() === covid + " ping") {
@@ -48,14 +49,13 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-  var url = "https://www.vg.no/spesial/2020/corona-viruset/data/norway-region-data/"
   if (msg.content.toLowerCase() === corona || msg.content.toLowerCase() === korona || msg.content.toLowerCase() === covid) {
+    var url = "https://www.vg.no/spesial/2020/corona-viruset/data/norway-region-data/"
     request({
       url: url,
       json: true
   }, 
 function (error, response, body) {
-  
       if (!error && response.statusCode === 200) {
           var string = JSON.stringify(body);
           var obj = JSON.parse(string);
@@ -68,7 +68,7 @@ function (error, response, body) {
           "description": 
           "\n**Smittede i Norge totalt:**\n" + obj.metadata.confirmed.total + " eller " + ((obj.metadata.confirmed.total/obj.metadata.population)*100).toFixed(2) + "%" +
           "\n**Nye tilfeller i dag:**\n" + obj.metadata.confirmed.newToday + 
-          "**\nBekreftete tilfeller per tusen innbygger:**\n" + obj.metadata.confirmed.per1kCapita + 
+          "\n**Bekreftete tilfeller per tusen innbygger:**\n" + obj.metadata.confirmed.per1kCapita + 
           "\n**I dag / i går totalt:**\n" + obj.timeseries.total.confirmed[today()] + "/" + obj.timeseries.total.confirmed[yesterday()] +
           "\n**Nye tilfeller i dag vs i går:**\n" + obj.metadata.confirmed.newToday + "/" + obj.metadata.confirmed.newYesterday +
           "\n**Døde i Norge totalt:**\n" + obj.metadata.dead.total + " eller " + ((obj.metadata.dead.total/obj.metadata.population)*100).toFixed(5) + "%" +
