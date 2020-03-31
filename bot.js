@@ -7,9 +7,19 @@ const client = new Discord.Client();
 const settings = require('./settings.json');
 const request = require("request")
 
+const activities_list = [
+  "!corona", 
+  "!covid-19",
+  "!korona"
+  ];
+
 //On ready
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  setInterval(() => {
+    const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); //Generates a random number between 1 and the length of the activities array list (in this case 4).
+    client.user.setActivity("Kommandoer: " + activities_list[index]); //Sets bot's activities to one of the phrases in the arraylist.
+}, 3000); //Runs this every 10 seconds.
 });
 
 var corona = "!corona"
