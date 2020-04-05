@@ -7,24 +7,25 @@ const client = new Discord.Client();
 const settings = require('./settings.json');
 const request = require("request")
 
-const activities_list = [
-  "!corona", 
-  "!covid-19",
-  "!korona"
-  ];
+//Setings
+const prefix = '!';
+let currentStatus = null;
+let commands = ['corona', 'korona', 'covid-19']
+
+var corona = prefix + "corona"
+var korona = prefix + "korona"
+var covid = prefix + "covid-19"
 
 //On ready
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   setInterval(() => {
-    const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); //Generates a random number between 1 and the length of the activities array list (in this case 4).
-    client.user.setActivity("Kommandoer: " + activities_list[index]); //Sets bot's activities to one of the phrases in the arraylist.
-}, 3000); //Runs this every 10 seconds.
+    if (currentStatus === null || ++currentStatus === commands.length) {
+      currentStatus = 0;
+    }
+    client.user.setActivity("Kommandoer: " + prefix + commands[currentStatus]); //Set activity
+  }, 15e3);
 });
-
-var corona = "!corona"
-var korona = "!korona"
-var covid = "!covid-19"
 
 //Todays date
 function today() {
@@ -59,7 +60,7 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-  if (msg.content.toLowerCase() === corona || msg.content.toLowerCase() === korona || msg.content.toLowerCase() === covid) {
+  if (msg.content.toLowerCase() === corona || msg.content.toLowerCase() === korona || msg.content.toLowerCase() === covid || msg.content.toLowerCase() === corona + " vg" || msg.content.toLowerCase() === korona + " vg" || msg.content.toLowerCase() === covid + " vg") {
     var url = "https://www.vg.no/spesial/2020/corona-viruset/data/norway-region-data/"
     request({
       url: url,
@@ -73,7 +74,7 @@ function (error, response, body) {
 {
   //Make it embed and send it
       "embed": {
-          "title": "Korona/Covid-19 statistikk i Norge",
+          "title": "Korona/Covid-19 statistikk i Norge\nData fra vg:",
           "color": 0x66c255,
           "description": 
           "\n**Smittede i Norge totalt:**\n" + obj.metadata.confirmed.total + " eller " + ((obj.metadata.confirmed.total/obj.metadata.population)*100).toFixed(2) + "%" +
