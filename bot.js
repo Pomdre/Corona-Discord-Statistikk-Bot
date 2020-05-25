@@ -11,11 +11,12 @@ const country = require('countryjs');
 //Setings
 const prefix = '!';
 let currentStatus = null;
-let commands = ['corona', 'korona', 'covid-19']
+let commands = ['corona', 'korona', 'covid-19', 'kåråna']
 
 var corona = prefix + "corona"
 var korona = prefix + "korona"
 var covid = prefix + "covid-19"
+var kaaraana = prefix + "kåråna"
 
 //On ready
 client.on('ready', () => {
@@ -30,13 +31,13 @@ client.on('ready', () => {
 
 //Just don't know why but i added a ping option
 client.on('message', msg => {
-    if (msg.content.toLowerCase() === corona + " ping" || msg.content.toLowerCase() === korona + " ping" || msg.content.toLowerCase() === covid + " ping") {
+    if (msg.content.toLowerCase() === corona + " ping" || msg.content.toLowerCase() === korona + " ping" || msg.content.toLowerCase() === covid + " ping" || msg.content.toLowerCase() === kaaraana + " ping") {
     msg.reply('Pong!');
   }
 });
 
 client.on('message', msg => {
-  if (msg.content.toLowerCase() === corona || msg.content.toLowerCase() === korona || msg.content.toLowerCase() === covid || msg.content.toLowerCase() === corona + " vg" || msg.content.toLowerCase() === korona + " vg" || msg.content.toLowerCase() === covid + " vg") {
+  if (msg.content.toLowerCase() === corona || msg.content.toLowerCase() === korona || msg.content.toLowerCase() === covid || msg.content.toLowerCase() === corona + " vg" || msg.content.toLowerCase() === korona + " vg" || msg.content.toLowerCase() === covid + " vg" || msg.content.toLowerCase() === kaaraana + " vg") {
     var url = "https://redutv-api.vg.no/corona/v1/sheets/norway-table-overview?region=county"
     request({
       url: url,
