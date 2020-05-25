@@ -37,7 +37,7 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-  if (msg.content.toLowerCase() === corona || msg.content.toLowerCase() === korona || msg.content.toLowerCase() === covid || || msg.content.toLowerCase() === kaaraana || msg.content.toLowerCase() === corona + " vg" || msg.content.toLowerCase() === korona + " vg" || msg.content.toLowerCase() === covid + " vg" || msg.content.toLowerCase() === kaaraana + " vg") {
+  if (msg.content.toLowerCase() === corona || msg.content.toLowerCase() === korona || msg.content.toLowerCase() === covid || msg.content.toLowerCase() === kaaraana || msg.content.toLowerCase() === corona + " vg" || msg.content.toLowerCase() === korona + " vg" || msg.content.toLowerCase() === covid + " vg" || msg.content.toLowerCase() === kaaraana + " vg") {
     var url = "https://redutv-api.vg.no/corona/v1/sheets/norway-table-overview?region=county"
     request({
       url: url,
