@@ -58,7 +58,7 @@ function (error, response, body) {
           "\n**Nye tilfeller i dag:**\n" + obj.totals.changes.newToday + 
           "\n**Nye tilfeller i dag vs i går:**\n" + obj.totals.changes.newToday + "/" + obj.totals.changes.newYesterday +
           "\n**Bekreftete tilfeller per tusen innbygger:**\n" + (obj.totals.confirmed/country.population('NO')*1000).toFixed(2) + 
-          "\n**Døde i Norge totalt:**\n" + obj.totals.dead + " eller " + ((obj.totals.dead/country.population('NO'))*100).toFixed(8) + "%" +
+          "\n**Døde i Norge totalt:**\n" + obj.totals.dead + " eller " + ((obj.totals.dead/country.population('NO'))*100).toFixed(4) + "%" +
           "\n**Døde i dag / i går:**\n" + obj.totals.changes.deathsToday + "/" + obj.totals.changes.deathsYesterday +
           "\n**FHI sier det er flere smittede i Norge enn tallene viser. Mørketallene kan være store, fordi mange ikke testes.**\n",
           "footer": {
