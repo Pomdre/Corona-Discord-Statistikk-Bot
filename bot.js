@@ -10,22 +10,23 @@ const country = require('countryjs');
 
 //Setings
 const prefix = '!';
-let currentStatus = null;
-let commands = ['corona', 'korona', 'covid-19', 'kåråna']
+const corona = prefix + "corona"
+const korona = prefix + "korona"
+const covid = prefix + "covid-19"
+const kaaraana = prefix + "kåråna"
 
-var corona = prefix + "corona"
-var korona = prefix + "korona"
-var covid = prefix + "covid-19"
-var kaaraana = prefix + "kåråna"
+let currentStatus = null;
+let commands = [`Er med i ${client.guilds.cache.size} server(e)!`, 'Kommandoer: ' + corona, 'Kommandoer: ' +  korona, 'Kommandoer: ' + covid, 'Kommandoer: ' + kaaraana]
 
 //On ready
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  console.log(`Serving ${client.guilds.cache.size} servers`);
   setInterval(() => {
     if (currentStatus === null || ++currentStatus === commands.length) {
       currentStatus = 0;
     }
-    client.user.setActivity("Kommandoer: " + prefix + commands[currentStatus]); //Set activity
+    client.user.setActivity(commands[currentStatus]); //Set activity
   }, 15e3);
 });
 
@@ -34,6 +35,13 @@ client.on('message', msg => {
     if (msg.content.toLowerCase() === corona + " ping" || msg.content.toLowerCase() === korona + " ping" || msg.content.toLowerCase() === covid + " ping" || msg.content.toLowerCase() === kaaraana + " ping") {
     msg.reply('Pong!');
   }
+});
+
+//Info command
+client.on('message', msg => {
+    if (msg.content.toLocaleLowerCase() === corona + " info" || msg.content.toLowerCase() === korona + " info" || msg.content.toLowerCase() === covid + " info" || msg.content.toLowerCase() === kaaraana + " info") {
+      msg.reply(`Er med i ${client.guilds.cache.size} server(e)!`);
+    }
 });
 
 client.on('message', msg => {
@@ -58,7 +66,7 @@ function (error, response, body) {
           "\n**Nye tilfeller i dag:**\n" + obj.totals.changes.newToday + 
           "\n**Nye tilfeller i dag vs i går:**\n" + obj.totals.changes.newToday + "/" + obj.totals.changes.newYesterday +
           "\n**Bekreftete tilfeller per tusen innbygger:**\n" + (obj.totals.confirmed/country.population('NO')*1000).toFixed(2) + 
-          "\n**Døde i Norge totalt:**\n" + obj.totals.dead + " eller " + ((obj.totals.dead/country.population('NO'))*100).toFixed(8) + "%" +
+          "\n**Døde i Norge totalt:**\n" + obj.totals.dead + " eller " + ((obj.totals.dead/country.population('NO'))*100).toFixed(4) + "%" +
           "\n**Døde i dag / i går:**\n" + obj.totals.changes.deathsToday + "/" + obj.totals.changes.deathsYesterday +
           "\n**FHI sier det er flere smittede i Norge enn tallene viser. Mørketallene kan være store, fordi mange ikke testes.**\n",
           "footer": {
