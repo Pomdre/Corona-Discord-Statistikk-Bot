@@ -16,7 +16,7 @@ const covid = prefix + "covid-19"
 const kaaraana = prefix + "kåråna"
 
 let currentStatus = null;
-let commands = [`Er med i ${client.guilds.cache.size} server(e)!`, 'Kommandoer: ' + corona, 'Kommandoer: ' +  korona, 'Kommandoer: ' + covid, 'Kommandoer: ' + kaaraana]
+let commands = ['Kommandoer: ' + corona, 'Kommandoer: ' +  korona, 'Kommandoer: ' + covid, 'Kommandoer: ' + kaaraana]
 
 //On ready
 client.on('ready', () => {
@@ -40,7 +40,7 @@ client.on('message', msg => {
 //Info command
 client.on('message', msg => {
     if (msg.content.toLocaleLowerCase() === corona + " info" || msg.content.toLowerCase() === korona + " info" || msg.content.toLowerCase() === covid + " info" || msg.content.toLowerCase() === kaaraana + " info") {
-      msg.reply(`Er med i ${client.guilds.cache.size} server(e)!`);
+      msg.reply(`Er med i ${client.guilds.cache.size} server(e)!\n Inviter meg: https://discordapp.com/oauth2/authorize?client_id=686622063280128000&permissions=68608&scope=bot\n Kildekoden min: https://github.com/Pomdre/Corona-Discord-Statistikk-Bot`);
     }
 });
 
