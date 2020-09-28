@@ -7,8 +7,6 @@ const client = new Discord.Client();
 const args = require('yargs').argv;
 const request = require("request");
 const country = require('countryjs');
-//To Test
-const core = require('@actions/core');
 
 //Setings
 const prefix = '!';
@@ -30,11 +28,6 @@ client.on('ready', () => {
     }
     client.user.setActivity(commands[currentStatus]); //Set activity
   }, 15e3);
-  if (args.dev === "true") {
-    var pid = core.getState(process.pid);
-    core.saveState("pid to kil", pid);
-    console.log("Allt er bra test done!");
-  }
 });
 
 //Just don't know why but i added a ping option
@@ -75,7 +68,7 @@ function (error, response, body) {
           "\n**Bekreftete tilfeller per tusen innbygger:**\n" + (obj.totals.confirmed/country.population('NO')*1000).toFixed(2) + 
           "\n**Døde i Norge totalt:**\n" + obj.totals.dead + " eller " + ((obj.totals.dead/country.population('NO'))*100).toFixed(4) + "%" +
           "\n**Døde i dag / i går:**\n" + obj.totals.changes.deathsToday + "/" + obj.totals.changes.deathsYesterday +
-          "\n**FHI sier det er flere smittede i Norge enn tallene viser. Mørketallene kan være store, fordi mange ikke testes.**\n",
+          "\n**Alle hverdager lages det en datafil som ligger til grunn for oppdatering av statistikken. Oppdateringen skjer cirka kl 12.45.**\n",
           "footer": {
           "icon_url": "https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/CAzpPzLHsrY2fxP?x=3840&y=1422&a=true&file=Pomdre%2520logo%2520Brukes%2520n%25C3%25A5.png&scalingup=0",
           "text": "Laget av @Pomdre#0449"
@@ -89,5 +82,4 @@ function (error, response, body) {
 });
 
 //Get token from input
-console.log(args.token);
 client.login(args.token);
