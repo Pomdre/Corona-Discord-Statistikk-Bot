@@ -28,6 +28,9 @@ client.on('ready', () => {
     }
     client.user.setActivity(commands[currentStatus]); //Set activity
   }, 15e3);
+  if (args.dev === "true") {
+    client.destroy;
+  }
 });
 
 //Just don't know why but i added a ping option
