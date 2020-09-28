@@ -1,0 +1,32 @@
+{
+  "name": "corona",
+  "version": "1.0.0",
+  "description": "En discord corona statistikk bot som viser corona statistikk i Norge.",
+  "main": "bot.js",
+  "dependencies": {
+    "countryjs": "^1.8.0",
+    "discord.js": "^12.3.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pomdre/Corona-Discord-Statistikk-Bot.git"
+  },
+  "keywords": [
+    "Korona",
+    "Corona",
+    "Discord",
+    "Norsk",
+    "Norge"
+  ],
+  "author": "Pomdre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pomdre/Corona-Discord-Statistikk-Bot/issues"
+  },
+  "homepage": "https://github.com/Pomdre/Corona-Discord-Statistikk-Bot#readme"
+}

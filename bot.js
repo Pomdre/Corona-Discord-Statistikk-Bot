@@ -17,7 +17,7 @@ const kaaraana = prefix + "kåråna"
 
 let currentStatus = null;
 let commands = [corona, korona, covid, kaaraana]
-//test
+
 //On ready
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
