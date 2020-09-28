@@ -7,6 +7,8 @@ const client = new Discord.Client();
 const args = require('yargs').argv;
 const request = require("request");
 const country = require('countryjs');
+//To Test
+const core = require('@actions/core');
 
 //Setings
 const prefix = '!';
@@ -29,7 +31,9 @@ client.on('ready', () => {
     client.user.setActivity(commands[currentStatus]); //Set activity
   }, 15e3);
   if (args.dev === "true") {
-    client.destroy;
+    var pid = core.getState(process.pid);
+    process.kill(pid);
+    console.log("Allt er bra test done!");
   }
 });
 
