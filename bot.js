@@ -82,4 +82,4 @@ function (error, response, body) {
 });
 
 //Get token from settings
-client.login(settings.token);
+client.login(env.token);
