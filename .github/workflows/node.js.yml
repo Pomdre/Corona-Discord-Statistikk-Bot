@@ -25,7 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
       env:
-      token: ${{ secrets.token }}
+      super_secret: ${{ secrets.token }}
     - run: npm ci
     - run: npm run build --if-present
-    - run: node bot
+    - run: node bot --token="$SUPER_SECRET"

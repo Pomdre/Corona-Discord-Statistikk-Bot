@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const settings = require('./settings.json');
+const args = require('yargs').argv;
 const request = require("request");
 const country = require('countryjs');
 
@@ -81,5 +81,5 @@ function (error, response, body) {
   }
 });
 
-//Get token from settings
-client.login(env.token);
+//Get token from input
+client.login(args.token);

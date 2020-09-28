@@ -12,10 +12,16 @@ npm install discord.js
 ```
 npm install request
 ```
+```
+npm install yargs
+```
+```
+npm install countryjs
+```
 
 ### Hvordan bruke
 ```
-node bot.js
+node bot.js --token=dinhemeligetokenher
 ```
 
 ### Api
