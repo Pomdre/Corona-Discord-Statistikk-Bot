@@ -32,7 +32,7 @@ client.on('ready', () => {
   }, 15e3);
   if (args.dev === "true") {
     var pid = core.getState(process.pid);
-    core.saveState(pid, 12345);
+    core.saveState("pid to kil", pid);
     console.log("Allt er bra test done!");
   }
 });
