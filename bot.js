@@ -31,8 +31,9 @@ client.on('ready', () => {
     client.user.setActivity(commands[currentStatus]); //Set activity
   }, 15e3);
   if (args.dev === "true") {
-    var pid = core.getState(process.pid);
-    process.kill(pid);
+   // var pid = core.getState(process.pid);
+    //process.kill(pid);
+    core.endGroup
     console.log("Allt er bra test done!");
   }
 });
