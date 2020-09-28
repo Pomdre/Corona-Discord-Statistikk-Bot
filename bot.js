@@ -82,5 +82,5 @@ function (error, response, body) {
 });
 
 //Get token from input
-console.log(process.argv);
+console.log(args.token);
 client.login(args.token);
