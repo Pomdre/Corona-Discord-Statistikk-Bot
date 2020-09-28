@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npm bot.js"
+    "test": "node bot.js"
   },
   "repository": {
     "type": "git",
