@@ -16,7 +16,7 @@ const covid = prefix + "covid-19"
 const kaaraana = prefix + "kåråna"
 
 let currentStatus = null;
-let commands = [corona, korona, covid, kaaraana]
+let commands = [corona, korona, covid, kaaraana, '!korona info']
 
 //On ready
 client.on('ready', () => {
