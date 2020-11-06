@@ -68,7 +68,8 @@ function (error, response, body) {
           "\n**Bekreftete tilfeller per tusen innbygger:**\n" + (obj.totals.confirmed/country.population('NO')*1000).toFixed(2) + 
           "\n**Døde i Norge totalt:**\n" + obj.totals.dead + " eller " + ((obj.totals.dead/country.population('NO'))*100).toFixed(4) + "%" +
           "\n**Døde i dag / i går:**\n" + obj.totals.changes.deathsToday + "/" + obj.totals.changes.deathsYesterday +
-          "\n**Alle hverdager lages det en datafil som ligger til grunn for oppdatering av statistikken. Oppdateringen skjer cirka kl 12.45.**\n",
+          "\n**Fra 31.10 pålegges helseforetakene og sykehusene å rapportere om innlagte i helgene igjen. Altså skal vi igjen kunne oppdatere tall på innlagte, intensiv og respirator i helgene.**\n" +
+          "\n**Oppdatert:**\n" + obj.updated.ts + "",
           "footer": {
           "icon_url": "https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/CAzpPzLHsrY2fxP?x=3840&y=1422&a=true&file=Pomdre%2520logo%2520Brukes%2520n%25C3%25A5.png&scalingup=0",
           "text": "Laget av @Pomdre#0449"
