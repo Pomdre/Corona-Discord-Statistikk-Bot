@@ -46,7 +46,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if (msg.content.toLowerCase() === corona || msg.content.toLowerCase() === korona || msg.content.toLowerCase() === covid || msg.content.toLowerCase() === kaaraana || msg.content.toLowerCase() === corona + " vg" || msg.content.toLowerCase() === korona + " vg" || msg.content.toLowerCase() === covid + " vg" || msg.content.toLowerCase() === kaaraana + " vg") {
-    var url = "https://redutv-api.vg.no/corona/v1/sheets/norway-table-overview?region=county"
+    var url = "https://redutv-api.vg.no/corona/v1/areas/country/key"
     request({
       url: url,
       json: true
@@ -62,14 +62,21 @@ function (error, response, body) {
           "title": "Korona/Covid-19 statistikk i Norge\nData fra vg:",
           "color": 0x66c255,
           "description": 
-          "\n**Smittede i Norge totalt:**\n" + obj.totals.confirmed + " eller " + ((obj.totals.confirmed/country.population('NO'))*100).toFixed(2) + "%" +
-          "\n**Nye tilfeller i dag:**\n" + obj.totals.changes.newToday + 
-          "\n**Nye tilfeller i dag vs i går:**\n" + obj.totals.changes.newToday + "/" + obj.totals.changes.newYesterday +
-          "\n**Bekreftete tilfeller per tusen innbygger:**\n" + (obj.totals.confirmed/country.population('NO')*1000).toFixed(2) + 
-          "\n**Døde i Norge totalt:**\n" + obj.totals.dead + " eller " + ((obj.totals.dead/country.population('NO'))*100).toFixed(4) + "%" +
-          "\n**Døde i dag / i går:**\n" + obj.totals.changes.deathsToday + "/" + obj.totals.changes.deathsYesterday +
-          "\n**Fra 31.10 pålegges helseforetakene og sykehusene å rapportere om innlagte i helgene igjen. Altså skal vi igjen kunne oppdatere tall på innlagte, intensiv og respirator i helgene.**\n" +
-          "\n**Oppdatert:**\n" + obj.updated.ts + "",
+          "\n**Smittede i Norge totalt:**\n" + obj.items[1].numbers[0].value + " eller " + ((obj.items[1].numbers[0].value/country.population('NO'))*100).toFixed(2) + "%" +
+          "\n**Nye tilfeller i går:**\n" + obj.items[1].numbers[1].value + 
+        //  "\n**Nye tilfeller i dag vs i går:**\n" + (obj.items[1].numbers[0].value-obj.items[1].numbers[1].value) + "/" + obj.items[1].numbers[1].value +
+          "\n**Bekreftete tilfeller per tusen innbygger:**\n" + (obj.items[1].numbers[0].value/country.population('NO')*1000).toFixed(2) +
+          "\n**Bekreftete tilfeller per 100k innbygger sist 14 dager:**\n" + obj.items[1].numbers[2].value +
+          "\n**Døde i Norge totalt:**\n" + obj.items[0].numbers[0].value + " eller " + ((obj.items[0].numbers[0].value/country.population('NO'))*100).toFixed(4) + "%" +
+          "\n**Døde i dag:**\n" + obj.items[0].numbers[1].value +// "/" + obj.totals.changes.deathsYesterday +
+          "\n**Testete foregående uke:**\n" + obj.items[2].numbers[0].value +
+          "\n**Testete siste uke:**\n" + obj.items[2].numbers[1].value +
+          "\n**Positive tester foregående uke:**\n" + obj.items[3].numbers[0].value + "%" +
+          "\n**Positive siste uke:**\n" + obj.items[3].numbers[1].value + "%" +
+          "\n**Innlagte på sykehus i dag / i går:**\n" + obj.items[5].numbers[1].value + "/" + obj.items[5].numbers[0].value +
+          "\n**Intensiv i dag / i går:**\n" + obj.items[6].numbers[1].value + "/" + obj.items[6].numbers[0].value +
+          "\n**Respirator i dag / i går:**\n" + obj.items[7].numbers[1].value + "/" + obj.items[7].numbers[0].value +
+          "\n**Oppdatert:**\n" + obj.meta.updated + "",
           "footer": {
           "icon_url": "https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/CAzpPzLHsrY2fxP?x=3840&y=1422&a=true&file=Pomdre%2520logo%2520Brukes%2520n%25C3%25A5.png&scalingup=0",
           "text": "Laget av @Pomdre#0449"
