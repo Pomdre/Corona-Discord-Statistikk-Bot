@@ -62,20 +62,20 @@ function (error, response, body) {
           "title": "Korona/Covid-19 statistikk i Norge\nData fra vg:",
           "color": 0x66c255,
           "description": 
-          "\n**Smittede i Norge totalt:**\n" + obj.items[1].numbers[0].value + " eller " + ((obj.items[1].numbers[0].value/country.population('NO'))*100).toFixed(2) + "%" +
+          "\n**Smittede i Norge totalt:**\n" + obj.items[1].numbers[0].value + " eller " + ((obj.items[1].numbers[0].value/country.population('NO'))*100).toFixed(2) + "%" + " trend: " + obj.items[4].latest.key +
           "\n**Nye tilfeller i går:**\n" + obj.items[1].numbers[1].value + 
         //  "\n**Nye tilfeller i dag vs i går:**\n" + (obj.items[1].numbers[0].value-obj.items[1].numbers[1].value) + "/" + obj.items[1].numbers[1].value +
           "\n**Bekreftete tilfeller per tusen innbygger:**\n" + (obj.items[1].numbers[0].value/country.population('NO')*1000).toFixed(2) +
           "\n**Bekreftete tilfeller per 100k innbygger sist 14 dager:**\n" + obj.items[1].numbers[2].value +
-          "\n**Døde i Norge totalt:**\n" + obj.items[0].numbers[0].value + " eller " + ((obj.items[0].numbers[0].value/country.population('NO'))*100).toFixed(4) + "%" +
-          "\n**Døde i dag:**\n" + obj.items[0].numbers[1].value +// "/" + obj.totals.changes.deathsYesterday +
           "\n**Testete foregående uke:**\n" + obj.items[2].numbers[0].value +
           "\n**Testete siste uke:**\n" + obj.items[2].numbers[1].value +
+          "\n**Positive siste uke:**\n" + obj.items[3].numbers[1].value + "%" + " diff: " + obj.items[3].numbers[1].diff +
           "\n**Positive tester foregående uke:**\n" + obj.items[3].numbers[0].value + "%" +
-          "\n**Positive siste uke:**\n" + obj.items[3].numbers[1].value + "%" +
-          "\n**Innlagte på sykehus i dag / i går:**\n" + obj.items[5].numbers[1].value + "/" + obj.items[5].numbers[0].value +
-          "\n**Intensiv i dag / i går:**\n" + obj.items[6].numbers[1].value + "/" + obj.items[6].numbers[0].value +
-          "\n**Respirator i dag / i går:**\n" + obj.items[7].numbers[1].value + "/" + obj.items[7].numbers[0].value +
+          "\n**Innlagte på sykehus i går:**\n" + obj.items[5].numbers[0].value +
+          "\n**Intensiv i går:**\n" + obj.items[6].numbers[0].value +
+          "\n**Respirator i går:**\n" + obj.items[7].numbers[0].value +
+          "\n**Døde i Norge totalt:**\n" + obj.items[0].numbers[0].value + " eller " + ((obj.items[0].numbers[0].value/country.population('NO'))*100).toFixed(4) + "%" +
+          "\n**Døde i dag / denne uken:**\n" + obj.items[0].numbers[1].value + "/" + obj.items[0].numbers[2].value +
           "\n**Oppdatert:**\n" + obj.meta.updated + "",
           "footer": {
           "icon_url": "https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/CAzpPzLHsrY2fxP?x=3840&y=1422&a=true&file=Pomdre%2520logo%2520Brukes%2520n%25C3%25A5.png&scalingup=0",
