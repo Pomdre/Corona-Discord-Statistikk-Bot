@@ -1,5 +1,6 @@
 # Corona 
 En discord corona statistikk bot som viser corona statistikk i Norge.
+Per 18.02.22 er dette prosjektet skrinlagdt.
 ### Installer
 
 ## Krever
